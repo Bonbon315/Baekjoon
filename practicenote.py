@@ -2,15 +2,16 @@ import sys
 sys.stdin = open('input.txt', 'r', encoding='utf-8')
 input = sys.stdin.readline
 
-books = dict()
+N, M = map(int, input().split())
+notheard = []
+notseen = []
 
-n = int(input())
-for i in range(n):
-    book = input().rstrip()
-    if book not in books:
-        books[book] = 1
-    else:
-        books[book] += 1
+for i in range(N):
+    notheard.append(input().rstrip())
+for i in range(M):
+    notseen.append(input().rstrip())
 
-books = dict(sorted(books.items()))
-print(max(books))
+notheardseen = sorted(list(set(notheard) & set(notseen)))
+print(len(notheardseen))
+for i in notheardseen:
+    print(i)
