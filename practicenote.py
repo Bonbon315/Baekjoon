@@ -2,20 +2,15 @@ import sys
 sys.stdin = open('input.txt', 'r', encoding='utf-8')
 input = sys.stdin.readline
 
-N = int(input())
-runners = dict()
-for i in range(N):
-    runner = input().rstrip()
-    if runner in runners:
-        runners[runner] += 1
+books = dict()
+
+n = int(input())
+for i in range(n):
+    book = input().rstrip()
+    if book not in books:
+        books[book] = 1
     else:
-        runners[runner] = 1
+        books[book] += 1
 
-for i in range(N-1):
-    runner = input().rstrip()
-    runners[runner] -= 1
-
-for i in runners:
-    if runners[i] > 0:
-        print(i)
-        break
+books = dict(sorted(books.items()))
+print(max(books))

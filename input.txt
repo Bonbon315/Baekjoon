@@ -1,6 +1,9 @@
-3
-leo
-kiki
-eden
-eden
-kiki
+8
+icecream
+peanuts
+peanuts
+chocolate
+candy
+chocolate
+icecream
+apple
