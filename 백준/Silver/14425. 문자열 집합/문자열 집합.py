@@ -10,7 +10,8 @@ for i in range(N):
 for i in range(M):
     words.append(input().rstrip())
 cnt = 0
+S = set(S)
 for k in words:
-    if k in set(S):
+    if k in S:
         cnt += 1
 print(cnt)
