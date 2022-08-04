@@ -2,39 +2,9 @@ import sys
 sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
-def prize17(rank):
-    if rank == 1:
-        return 5000000
-    elif 2 <= rank <= 3:
-        return 3000000
-    elif 4 <= rank <= 6:
-        return 2000000
-    elif 7 <= rank <= 10:
-        return 500000
-    elif 11 <= rank <= 15:
-        return 300000
-    elif 16 <= rank <= 21:
-        return 100000
-    else:
-        return 0
+N = int(input())
 
-def prize18(rank):
-    if rank == 1:
-        return 5120000
-    elif 2 <= rank <= 3:
-        return 2560000
-    elif 4 <= rank <= 7:
-        return 1280000
-    elif 8 <= rank <= 15:
-        return 640000
-    elif 16 <= rank <= 31:
-        return 320000
-    else:
-        return 0
-
-
-T = int(input())
-for i in range(T):
-    a, b = map(int, input().split())
-    print(prize17(a) + prize18(b))
-
+for i in range(N):
+    word = list(input().split()) #입력받은 문자열, 문장을 띄어 쓰기 기준으로 잘라 리스트 요소로 반환
+    for j in word : #for 반복문을 통해 리스트를 순회하며, -1로 뒤집음. end처리로 띄어쓰기선언해 구분
+        print(j[::-1], end=' ')
