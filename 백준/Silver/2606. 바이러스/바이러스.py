@@ -6,7 +6,7 @@ def dfs(graph, pc, visited):
     for i in graph[pc]:
         if visited[i] == 0:
             dfs(graph, i, visited)
-    return True
+
 
 n = int(input())
 m = int(input())
