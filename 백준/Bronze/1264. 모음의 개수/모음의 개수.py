@@ -1,8 +1,5 @@
-import sys
-input = sys.stdin.readline
-
 while True:
-    sent = input().rstrip()
+    sent = input()
     cnt = 0
     if sent == '#':
         break
