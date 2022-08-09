@@ -2,31 +2,24 @@ import sys
 sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
-R, C = map(int, input().split())
+def dfs(graph, pc, visited):
+    visited[pc] = 1
+    for i in graph[pc]:
+        if visited[i] == 0:
+            dfs(graph, i, visited)
 
-parking = [list(input().rstrip()) for _ in range(R)]
-mtruck = [0, 0, 0, 0, 0]
-dx = [0, 0, 1, 1]
-dy = [0, 1, 0, 1]
 
-for x in range(R-1):
-    for y in range(C-1):
-        cnt = 0
-        available = True
+n = int(input())
+m = int(input())
 
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
+net = [[] for _ in range(n)]
+visited = [0] * n
+for _ in range(m):
+    v1, v2 = map(int, input().split())
+    v1 -= 1
+    v2 -= 1
+    net[v1].append(v2)
+    net[v2].append(v1)
 
-            if parking[nx][ny] == '#':
-                cnt = 0
-                available = False
-                break
-            elif parking[nx][ny] == 'X':
-                cnt += 1
-
-        if available == True:
-            mtruck[cnt] += 1
-
-for i in range(5):
-    print(mtruck[i])
+dfs(net, 0, visited)
+print(sum(visited)-1)
