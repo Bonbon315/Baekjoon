@@ -2,28 +2,31 @@ import sys
 sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
-N, M = map(int, input().split())
+R, C = map(int, input().split())
 
-maze = [list(map(int, input().strip())) for _ in range(N)]
-route = [[0] * M for _ in range(N)]
+parking = [list(input().rstrip()) for _ in range(R)]
+mtruck = [0, 0, 0, 0, 0]
+dx = [0, 0, 1, 1]
+dy = [0, 1, 0, 1]
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+for x in range(R-1):
+    for y in range(C-1):
+        cnt = 0
+        available = True
 
-queue = [(0, 0)]
-route[0][0] = 1
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
 
-while queue:
-    x, y = queue.pop(0)
+            if parking[nx][ny] == '#':
+                cnt = 0
+                available = False
+                break
+            elif parking[nx][ny] == 'X':
+                cnt += 1
 
-    if x == N-1 and y == M-1:
-        print(route[x][y])
-        break
+        if available == True:
+            mtruck[cnt] += 1
 
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if 0 <= nx < N and 0 <= ny < M:
-            if route[nx][ny] == 0 and maze[nx][ny] == 1:
-                route[nx][ny] = route[x][y] + 1
-                queue.append((nx,ny))
+for i in range(5):
+    print(mtruck[i])
