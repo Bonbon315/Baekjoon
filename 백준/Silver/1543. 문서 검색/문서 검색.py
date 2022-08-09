@@ -1,16 +1,7 @@
-import sys
-input = sys.stdin.readline
+N = input()
+M = input()
 
-a = input().rstrip()
-b = input().rstrip()
-cnt = 0
-idx = 0
-
-for i in range(len(a)):
-    if idx > i:
-        continue
-    if a[i: i+len(b)] == b:
-        cnt += 1
-        idx = i + len(b)
+# N에 있는 입력값에, M이 몇개 있는지 숫자를 샌다
+cnt = N.count(M)
 
 print(cnt)
