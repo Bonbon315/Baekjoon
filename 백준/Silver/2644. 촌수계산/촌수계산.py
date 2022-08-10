@@ -9,7 +9,7 @@ def dfs(person, degree):
         ans.append(degree)
     
     for i in graph[person]:
-        if visited[i] == 0:
+        if not visited[i]:
             dfs(i, degree)
 
 
